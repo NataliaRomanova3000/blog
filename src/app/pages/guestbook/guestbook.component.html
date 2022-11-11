@@ -1,12 +1,17 @@
-<h4>Guest book</h4>
+<mat-toolbar color="primary">
+  <span>Guest book</span>
+  <span class="example-spacer"></span>
+  <button mat-button (click)="addNew()" >
+    <mat-icon>more_vert</mat-icon>
+  </button>
+</mat-toolbar>
 
-<button (click)="addNew()">Add</button>
+<mat-list>
+  <mat-list-item *ngFor="let guest of guestbooks$ | async">
+    <h3 matLine> {{guest.author}} </h3>
+    <p matLine class="demo-2"> {{guest.message}} </p>
+  </mat-list-item>
+</mat-list>
 
-<div *ngFor="let guest of guestbooks$ | async; let i=index">
-  <span >{{i+1}}.</span> {{guest.author}}
-</div>
 
-<h4>Add feedback</h4>
 
-<input #box >
-<button (click)="addGuestbook(box.value)">Add</button>

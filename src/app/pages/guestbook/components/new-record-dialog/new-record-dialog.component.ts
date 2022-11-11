@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { Guestbook } from 'src/app/models/guestbook';
@@ -21,22 +21,30 @@ export class NewRecordDialogComponent implements OnInit {
   ) { }
 
   author = new FormControl('', [Validators.required]);
-  message = new FormControl('', [Validators.required]);
+  message = new FormControl('', [Validators.required, Validators.minLength(20)]);
 
   getErrorMessage() {
     return this.author.hasError('required') ? 'You must enter a name or email' : '';
   }
 
+  getErrorMessageMessage() {
+    return this.message.hasError('required') ? 'You must enter a message' :
+          (this.message.errors?.minlength ? 'You mas provide 20 symbols at list' : '') ;
+  }
+
   ngOnInit(): void {
+
   }
 
   save() {
-    const guestbook = new Guestbook();
-    guestbook.author = this.author.value;
-    guestbook.message = this.message.value;
+    if(this.author.valid && this.message.valid) {
+      const guestbook = new Guestbook();
+      guestbook.author = this.author.value;
+      guestbook.message = this.message.value;
 
-    this.store.dispatch(addGuestbook(guestbook));
-    this.dialogRef.close(guestbook);
+      this.store.dispatch(addGuestbook(guestbook));
+      this.dialogRef.close(guestbook);
+    }
   }
 
   dismiss() {

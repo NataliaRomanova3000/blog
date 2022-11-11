@@ -1,4 +1,4 @@
-<h2 mat-dialog-title>Add new feedback</h2>
+<h2 mat-dialog-title>Add</h2>
 <mat-dialog-content>
   <div class="example-container">
     <mat-form-field appearance="fill">
@@ -11,6 +11,7 @@
     <mat-form-field appearance="fill">
       <mat-label>Message</mat-label>
       <textarea matInput [formControl]="message" required></textarea>
+      <mat-error *ngIf="message.invalid">{{getErrorMessageMessage()}}</mat-error>
     </mat-form-field>
   </div>
 

@@ -1,7 +1,20 @@
-<a [routerLink]="['/guestbook']">
-  Guest book
-</a>
+<mat-toolbar color="primary">
+  <span>{{post.title}}</span>
+  <span class="example-spacer"></span>
+  <a [routerLink]="['/guestbook']">
+    Guest book
+  </a>
+</mat-toolbar>
 
-<h1>{{post.title}}</h1>
-<p>{{post.body}}</p>
-<p>sfsdfsd</p>
+<div class="content">
+  <mat-card>
+      <p>{{post.body}}</p>
+  </mat-card>
+  <br>
+  <mat-card>
+    <h1>Comments</h1>
+    <button mat-button>Add comment</button>
+  </mat-card>
+</div>
+
+
