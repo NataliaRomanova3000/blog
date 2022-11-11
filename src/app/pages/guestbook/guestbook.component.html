@@ -1,1 +1,12 @@
-<p>guestbook works!</p>
+<h4>Guest book</h4>
+
+<button (click)="addNew()">Add</button>
+
+<div *ngFor="let guest of guestbooks$ | async; let i=index">
+  <span >{{i+1}}.</span> {{guest.author}}
+</div>
+
+<h4>Add feedback</h4>
+
+<input #box >
+<button (click)="addGuestbook(box.value)">Add</button>

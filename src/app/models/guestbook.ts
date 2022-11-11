@@ -1,4 +1,4 @@
-export class Guestbookmodel {
+export class Guestbook {
   author: string;
   message: string;
 }
