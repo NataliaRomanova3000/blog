@@ -16,9 +16,9 @@ import { GuestbookComponent } from './pages/guestbook/guestbook.component';
 import { reducers, metaReducers } from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
-import { guestbookFeatureKey, reducer } from './guestbook/store/reducer/guestbook.reducer';
 import { GuestbookModule } from './guestbook/guestbook.module';
 import { NewRecordDialogComponent } from './pages/guestbook/components/new-record-dialog/new-record-dialog.component';
+import { CommentModule } from './comment/comment.module';
 
 @NgModule({
   declarations: [
@@ -38,6 +38,7 @@ import { NewRecordDialogComponent } from './pages/guestbook/components/new-recor
     AppRoutingModule,
     BrowserAnimationsModule,
     GuestbookModule,
+    CommentModule,
     StoreModule.forRoot({}, {}),
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : []

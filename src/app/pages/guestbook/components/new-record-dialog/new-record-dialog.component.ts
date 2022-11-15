@@ -29,7 +29,7 @@ export class NewRecordDialogComponent implements OnInit {
 
   getErrorMessageMessage() {
     return this.message.hasError('required') ? 'You must enter a message' :
-          (this.message.errors?.minlength ? 'You mas provide 20 symbols at list' : '') ;
+          (this.message.errors?.minlength ? 'You mast provide 20 symbols at list' : '') ;
   }
 
   ngOnInit(): void {
