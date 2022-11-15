@@ -1,10 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { Observable } from 'rxjs';
 import { Guestbook } from 'src/app/models/guestbook';
-import { select, Store } from '@ngrx/store';
-import { selectGuestbooks } from 'src/app/guestbook/store/selector/guestbook.selectors';
+import { Store } from '@ngrx/store';
 import { GuestbookState } from 'src/app/guestbook/store/reducer/guestbook.reducer';
 import { addGuestbook } from 'src/app/guestbook/store/action/guestbook.action';
 
@@ -13,7 +11,7 @@ import { addGuestbook } from 'src/app/guestbook/store/action/guestbook.action';
   templateUrl: './new-record-dialog.component.html',
   styleUrls: ['./new-record-dialog.component.css']
 })
-export class NewRecordDialogComponent implements OnInit {
+export class NewRecordDialogComponent {
 
   constructor(
     private dialogRef: MatDialogRef<NewRecordDialogComponent>,
@@ -30,10 +28,6 @@ export class NewRecordDialogComponent implements OnInit {
   getErrorMessageMessage() {
     return this.message.hasError('required') ? 'You must enter a message' :
           (this.message.errors?.minlength ? 'You mast provide 20 symbols at list' : '') ;
-  }
-
-  ngOnInit(): void {
-
   }
 
   save() {
