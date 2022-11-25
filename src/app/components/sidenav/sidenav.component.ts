@@ -25,4 +25,5 @@ export class SidenavComponent implements OnInit {
     this.posts = this.postService.posts;
     this.postService.loadAll();
   }
+
 }
