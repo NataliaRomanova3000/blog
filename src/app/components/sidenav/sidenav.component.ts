@@ -11,7 +11,7 @@ const SMALL_WIDTH_BREAKPOINT = 720;
 @Component({
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',
-  styleUrls: ['./sidenav.component.scss']
+  styleUrls: ['./sidenav.component.css']
 })
 export class SidenavComponent implements OnInit {
 
@@ -27,14 +27,6 @@ export class SidenavComponent implements OnInit {
     private router: Router) { }
 
   @ViewChild(MatSidenav) sidenav: MatSidenav;
-
-  toggleTheme() {
-    this.isDarkTheme = !this.isDarkTheme;
-  }
-
-  toggleDir() {
-    this.dir = this.dir == 'ltr' ? 'rtl' : 'ltr';
-  }
 
   ngOnInit(): void {
     this.breakpointObserver

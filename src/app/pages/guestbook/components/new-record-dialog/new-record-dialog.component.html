@@ -4,21 +4,22 @@
   <div class="example-container">
     <mat-form-field appearance="fill">
       <mat-label>Author</mat-label>
-      <input matInput formControlName="author" required>
-      <mat-error *ngIf="messageForm.controls.author.errors">{{getErrorMessage()}}</mat-error>
+      <input matInput formControlName="author" required id="autor">
+      <mat-error *ngIf="messageForm.controls.author.errors">You must enter a name or email</mat-error>
     </mat-form-field>
     <br>
 
     <mat-form-field appearance="fill">
       <mat-label>Message</mat-label>
-      <textarea matInput formControlName="message" required></textarea>
-      <mat-error *ngIf="messageForm.controls.message.errors">{{getErrorMessageMessage()}}</mat-error>
+      <textarea matInput formControlName="message" required id="message"></textarea>
+      <mat-error *ngIf="messageForm.controls.message.errors?.required">You must enter message</mat-error>
+      <mat-error *ngIf="messageForm.controls.message.errors?.minlength">You must provide 20 symbols at least</mat-error>
     </mat-form-field>
   </div>
 
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button color="primary" type="submit">
+  <button mat-button color="primary" type="submit" id="button">
     <mat-icon>save</mat-icon> Save
   </button>
   <button mat-button color="primary" (click)="dismiss()">

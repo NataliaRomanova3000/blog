@@ -16,7 +16,8 @@
     <div>
       <mat-form-field appearance="fill">
         <textarea matInput [formControl]="message" required></textarea>
-        <mat-error *ngIf="message.invalid">{{getErrorMessage()}}</mat-error>
+        <mat-error *ngIf="message.errors?.required">You must enter a comment</mat-error>
+        <mat-error *ngIf="message.errors?.minlength">You must provide 5 symbols at least</mat-error>
       </mat-form-field>
         <button mat-button (click)="addNewComment()">Add comment</button>
     </div>

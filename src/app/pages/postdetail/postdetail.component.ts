@@ -36,11 +36,6 @@ export class PostdetailComponent implements OnInit {
     })
   }
 
-  getErrorMessage() {
-    return this.message.hasError('required') ? 'You must enter a comment' :
-          (this.message.errors?.minlength ? 'You mast provide 5 symbols at list' : '') ;
-  }
-
   addNewComment() {
     if(this.message.valid) {
       const comment = new Comment();
